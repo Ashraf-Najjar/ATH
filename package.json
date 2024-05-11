@@ -1,0 +1,29 @@
+{
+  "name": "e-market-haven",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashraf-Najjar/E-Market-Haven.git"
+  },
+  "author": "Ashraf Najjar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ashraf-Najjar/E-Market-Haven/issues"
+  },
+  "homepage": "https://github.com/Ashraf-Najjar/E-Market-Haven#readme",
+  "dependencies": {
+    "apollo-server-express": "^3.13.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "graphql": "^16.8.1",
+    "mongoose": "^8.3.1",
+    "nodemon": "^3.1.0"
+  },
+  "type": "module"
+}
