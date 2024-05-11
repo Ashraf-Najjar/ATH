@@ -1,11 +1,11 @@
 export const userInputs = `#graphql
  input CreateUserInput {
-    firstName: String
-    lastName: String
-    email: String
-    phone: String
-    # managers: managersSchema,
-    # address: addressSchema,
+   firstName: String
+   lastName: String
+   email: String
+   phone: String
+   # managers: managersSchema,
+   address: AddressInput,
     # role: {
     #     type: mongoose.Schema.Types.ObjectId, 
     #     ref: "Role", 
@@ -14,12 +14,12 @@ export const userInputs = `#graphql
  }
 
  input UpdateUserInput {
-    firstName: String
-    lastName: String
-    email: String
-    phone: String
-    # managers: managersSchema,
-    # address: addressSchema,
+   firstName: String
+   lastName: String
+   email: String
+   phone: String
+   # managers: managersSchema,
+   address: AddressInput,
     # role: {
     #     type: mongoose.Schema.Types.ObjectId, 
     #     ref: "Role", 

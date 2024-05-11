@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
+import {addressSchema} from "../shared/models/address.js";
+
 const userSchema = new Schema({
     firstName: String,
     lastName: String,
@@ -15,7 +17,7 @@ const userSchema = new Schema({
     },
     password: String,
     // managers: managersSchema,
-    // address: addressSchema,
+    address: addressSchema,
     // role: {
     //     type: mongoose.Schema.Types.ObjectId, 
     //     ref: "Role", 

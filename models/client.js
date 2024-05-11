@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
+import {addressSchema} from "../shared/models/address.js";
+
 const clientSchema = new Schema({
     firstName: String,
     lastName: String,
@@ -10,10 +12,10 @@ const clientSchema = new Schema({
         unique: true
     },
     phone: {
-        type: Number,
+        type: String,
         required: true
     },
-    // address: addressSchema,
+    address: addressSchema,
     createdAt: Date,
     lastUpdate: Date,
     createdBy: {

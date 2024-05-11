@@ -3,9 +3,9 @@ export const clientDefs = `#graphql
       firstName: String
       lastName: String
       email: String
-      phone: Int
+      phone: String
       # managers: managersSchema,
-      # address: addressSchema,
+      address: Address,
       # role: {
       #     type: mongoose.Schema.Types.ObjectId, 
       #     ref: "Role", 

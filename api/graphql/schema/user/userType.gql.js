@@ -6,7 +6,7 @@ export const userDefs = `#graphql
     email: String
     phone: String
     # managers: managersSchema,
-    # address: addressSchema,
+    address: Address,
     # role: {
     #     type: mongoose.Schema.Types.ObjectId, 
     #     ref: "Role", 
