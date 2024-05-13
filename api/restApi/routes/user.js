@@ -1,6 +1,9 @@
 import express from "express";
 import userUseCases from "../../../useCases/user/index.js";
 
+import {validateUserSchema} from "../../../validators/user-validators.js";
+import { validate } from "../../../validators/validate.js";
+
 export const userRoutes = express.Router();
 
 userRoutes.get('/list', async(req, res) => {
@@ -18,14 +21,20 @@ userRoutes.get('/:id', async(req, res) => {
 });
 
 userRoutes.post('/create', async(req, res) => {
-    const user = await userUseCases.createUser(req.body);
-    return res.status(201).json({
-        message: 'User created Successfully',
-        result: user
-    })
+    try {
+        await validate(validateUserSchema(), req.body.user);
+        const user = await userUseCases.createUser(req.body);
+        return res.status(201).json({
+            message: 'User created Successfully',
+            result: user
+        })
+    }catch(err) {
+        return res.status(401).json(err)
+    }
 });
 
 userRoutes.post('/update', async(req, res) => {
+    await validate(validateUserSchema(), req.body.user);
     const user = await userUseCases.updateUser(req.body);
     return res.status(201).json({
         message: 'User updated Successfully',

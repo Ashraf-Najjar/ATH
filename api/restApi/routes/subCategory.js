@@ -1,6 +1,9 @@
 import express from "express";
 import subCategoryUseCases from "../../../useCases/subCategory/index.js";
 
+import {validateSubCategorySchema} from "../../../validators/subCategory-validators.js";
+import { validate } from "../../../validators/validate.js";
+
 export const subCategoryRoutes = express.Router();
 
 subCategoryRoutes.get('/list', async(req, res) => {
@@ -18,6 +21,7 @@ subCategoryRoutes.get('/:id', async(req, res) => {
 });
 
 subCategoryRoutes.post('/create', async(req, res) => {
+    await validate(validateSubCategorySchema(), req.body.subCategory);
     const subCategory = await subCategoryUseCases.createSubCategory(req.body);
     return res.status(201).json({
         message: 'SubCategory created Successfully',
@@ -26,6 +30,7 @@ subCategoryRoutes.post('/create', async(req, res) => {
 });
 
 subCategoryRoutes.post('/update', async(req, res) => {
+    await validate(validateSubCategorySchema(), req.body.subCategory);
     const subCategory = await subCategoryUseCases.updateSubCategory(req.body);
     return res.status(201).json({
         message: 'SubCategory updated Successfully',

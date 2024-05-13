@@ -2,6 +2,9 @@
 import subCategoryUseCases from "../../../useCases/subCategory/index.js";
 import categoryUseCases from "../../../useCases/category/index.js";
 
+import {validateSubCategorySchema} from "../../../validators/subCategory-validators.js";
+import { validate } from "../../../validators/validate.js";
+
 export const subCategoryResolver = {
     Query: {
         subCategory: async (parent, args) => {
@@ -18,9 +21,11 @@ export const subCategoryResolver = {
     },
     Mutation: {
         createSubCategory: async (parent, args) => {
+            await validate(validateSubCategorySchema(), args.subCategory);
             return await subCategoryUseCases.createSubCategory(args);
         },
         updateSubCategory: async (parent, args) => {
+            await validate(validateSubCategorySchema(), args.subCategory);
             return await subCategoryUseCases.updateSubCategory(args);
         },
         deleteSubCategory: async (parent, args) => {

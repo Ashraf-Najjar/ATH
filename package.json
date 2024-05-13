@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Ashraf-Najjar/E-Market-Haven#readme",
   "dependencies": {
+    "@vinejs/vine": "^2.0.0",
     "apollo-server-express": "^3.13.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

@@ -1,6 +1,9 @@
 import express from "express";
 import categoryUseCases from "../../../useCases/category/index.js";
 
+import {validateCategorySchema} from "../../../validators/category-validators.js";
+import { validate } from "../../../validators/validate.js";
+
 export const categoryRoutes = express.Router();
 
 categoryRoutes.get('/list', async(req, res) => {
@@ -18,6 +21,7 @@ categoryRoutes.get('/:id', async(req, res) => {
 });
 
 categoryRoutes.post('/create', async(req, res) => {
+    await validate(validateCategorySchema(), req.body.category);
     const category = await categoryUseCases.createCategory(req.body);
     return res.status(201).json({
         message: 'Category created Successfully',
@@ -26,6 +30,7 @@ categoryRoutes.post('/create', async(req, res) => {
 });
 
 categoryRoutes.post('/update', async(req, res) => {
+    await validate(validateCategorySchema(), req.body.category);
     const category = await categoryUseCases.updateCategory(req.body);
     return res.status(201).json({
         message: 'Category updated Successfully',
