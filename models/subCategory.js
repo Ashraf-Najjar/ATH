@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const subCategorySchema = new Schema({
     name: String,
+    note: String,
     description: String,
     category: {
         type: mongoose.Schema.Types.ObjectId, 

@@ -1,4 +1,4 @@
-import {categories} from "./categorys.js"
+import {categories, categoriesCount} from "./categories.js"
 import {category} from "./category.js"
 import {createCategory} from "./createCategory.js"
 import {updateCategory} from "./updateCategory.js"
@@ -8,6 +8,7 @@ import {disableCategory} from "./disableCategory.js"
 
 export default {
     categories,
+    categoriesCount,
     category,
     createCategory,
     updateCategory,

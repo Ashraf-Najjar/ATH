@@ -15,10 +15,12 @@ export const userDefs = `#graphql
     createdAt: Date,
     lastUpdate: Date,
     createdBy: User
+    deleted: Boolean
+    enabled: Boolean
  }
 
  extend type Query {
-   users: [User]
+   users(skip: Int, limit: Int, filters: [FilterInput]): [User]
    user(id: ID): User
  }
 

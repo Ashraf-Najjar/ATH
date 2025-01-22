@@ -6,7 +6,7 @@ export const userResolver = {
         user: async (parent, args) => {
             return await userUseCases.user(args);
         },
-        users: async (parent, args) => {
+        users: async (parent, args, context) => {
             return await userUseCases.users(args);
         }
     },

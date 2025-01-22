@@ -1,4 +1,4 @@
-import {users} from "./users.js"
+import {users, usersCount} from "./users.js"
 import {user} from "./user.js"
 import {createUser} from "./createUser.js"
 import {updateUser} from "./updateUser.js"
@@ -13,5 +13,6 @@ export default {
     updateUser,
     deleteUser,
     enableUser,
-    disableUser
+    disableUser,
+    usersCount
 }

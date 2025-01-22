@@ -7,9 +7,14 @@ import { validate } from "../../../validators/validate.js";
 export const categoryRoutes = express.Router();
 
 categoryRoutes.get('/list', async(req, res) => {
-    const categorys = await categoryUseCases.categories(req.body);
+    const skip = +req.query.skip;
+    const limit = +req.query.limit;
+    const filters = typeof req.query.filters === "string" ? JSON.parse(req.query.filters) : req.query.filters;
+    const categories = await categoryUseCases.categories({...req.body, skip, limit, filters});
+    const categoriesCount = await categoryUseCases.categoriesCount({...req.body, skip, limit, filters});
     return res.status(201).json({
-        categorys: categorys
+        categories: categories,
+        count: categoriesCount
     })
 });
 
@@ -46,7 +51,7 @@ categoryRoutes.post('/delete', async(req, res) => {
     })
 });
 
-categoryRoutes.post('/disabled', async(req, res) => {
+categoryRoutes.post('/disable', async(req, res) => {
     const category = await categoryUseCases.disableCategory(req.body);
     return res.status(201).json({
         message: 'Category disabled Successfully',

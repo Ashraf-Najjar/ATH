@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-import { addressSchema } from '../shared/models/address';
+import { addressSchema } from '../shared/models/address.js';
 
 const productSchema = new Schema({
     name: String,
@@ -14,7 +14,7 @@ const productSchema = new Schema({
     },
     subCategory: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: "Category"
+        ref: "SubCategory"
     },
     createdAt: Date,
     lastUpdate: Date,
@@ -32,5 +32,4 @@ const productSchema = new Schema({
     },
 });
 
-
-module.exports = mongoose.model('Product', productSchema);
+export default mongoose.model('Product', productSchema);

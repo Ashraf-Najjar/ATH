@@ -7,9 +7,14 @@ import { validate } from "../../../validators/validate.js";
 export const userRoutes = express.Router();
 
 userRoutes.get('/list', async(req, res) => {
-    const users = await userUseCases.users(req.body);
+    const skip = +req.query.skip;
+    const limit = +req.query.limit;
+    const filters = typeof req.query.filters === "string" ? JSON.parse(req.query.filters) : req.query.filters;
+    const users = await userUseCases.users({...req.body, skip, limit, filters});
+    const usersCount = await userUseCases.usersCount({...req.body, skip, limit, filters});
     return res.status(201).json({
-        users: users
+        users: users,
+        count: usersCount
     })
 });
 
@@ -50,7 +55,7 @@ userRoutes.post('/delete', async(req, res) => {
     })
 });
 
-userRoutes.post('/disabled', async(req, res) => {
+userRoutes.post('/disable', async(req, res) => {
     const user = await userUseCases.disableUser(req.body);
     return res.status(201).json({
         message: 'User disabled Successfully',

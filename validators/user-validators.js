@@ -5,11 +5,11 @@ export const validateUserSchema = () => {
         firstName: vine.string(),
         lastName: vine.string(),
         email: vine.string().email(),
-        phone: vine.string().mobile(),
-        address: vine.object({
-            country: vine.string(),
-            region: vine.string(),
-            point: vine.string(),
-        })
+        // phone: vine.string().mobile(),
+        // address: vine.object({
+        //     country: vine.string(),
+        //     region: vine.string(),
+        //     point: vine.string(),
+        // })
       });
 } 

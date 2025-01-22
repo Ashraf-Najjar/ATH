@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const options = {
-    useNewUrlParser: false,
+    // useNewUrlParser: false,
 };
 
 export const dbConnection = async() => {

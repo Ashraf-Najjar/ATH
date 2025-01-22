@@ -13,19 +13,23 @@ import {subCategoryDefs} from "./subCategory/subCategoryType.gql.js";
 import {subCategoryInputs} from "./subCategory/subCategoryInput.gql.js";
 
 import {productDefs} from "./product/productType.gql.js";
+import {productInputs} from "./product/productInput.gql.js";
 
 import addressDefs from "./shared/addressType.gql.js";
+import filtersDefs from "./shared/filter.gql.js";
 
 import scalarTypes from "../../../shared/api/graphql/scalar-types/index.js";
 
 export default [
     scalarTypes.typedefs,
     addressDefs,
+    filtersDefs,
     rootSchema,
     userDefs,
     userInputs,
     clientInputs,
     clientDefs,
+    productInputs,
     productDefs,
     categoryInputs,
     categoryDefs,

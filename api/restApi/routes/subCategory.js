@@ -7,9 +7,14 @@ import { validate } from "../../../validators/validate.js";
 export const subCategoryRoutes = express.Router();
 
 subCategoryRoutes.get('/list', async(req, res) => {
-    const subCategorys = await subCategoryUseCases.subCategories({...req.body, populate: true});
+    const skip = +req.query.skip;
+    const limit = +req.query.limit;
+    const filters = typeof req.query.filters === "string" ? JSON.parse(req.query.filters) : req.query.filters;
+    const subCategories = await subCategoryUseCases.subCategories({...req.body, skip, limit, filters, populate: true});
+    const subCategoriesCount = await subCategoryUseCases.subCategoriesCount({...req.body, skip, limit, filters});
     return res.status(201).json({
-        subCategorys: subCategorys
+        subCategories: subCategories,
+        count: subCategoriesCount
     })
 });
 

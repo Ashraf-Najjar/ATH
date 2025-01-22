@@ -1,14 +1,17 @@
 export const categoryDefs = `#graphql
    type Category {
+      _id: ID
       name: String
       note: String
       description: String
       createdAt: Date,
       lastUpdate: Date,
       createdBy: User
+      deleted: Boolean
+      enabled: Boolean
    }
    extend type Query {
-      categories: [Category]
+      categories(skip: Int, limit: Int, filters: [FilterInput]): [Category]
       category(id: ID): Category
    }
 

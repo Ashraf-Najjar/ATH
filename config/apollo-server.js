@@ -8,7 +8,12 @@ export const startApolloServer = async(app) => {
         // server setup
         const server = new ApolloServer({
             typeDefs,
-            resolvers
+            resolvers,
+            // context: async ({ req, res }) => {
+            //   return {
+            //     test: "Ashraf"
+            //   }
+            // }
           })
           
         await server.start();
