@@ -2,7 +2,7 @@ import User from "../../models/user.js";
 import {userFilters} from "../../filters/user.filters.js"
 import {extractFilters} from "../../shared/helpers/filter.helper.js";
 export const users = async (args) => {
-    let query = {};
+    let query = {role: {$ne: "client"}};
     const skip = args.skip;
     const limit = args.limit;
     const filters = extractFilters(args.filters, userFilters(args.filters));
@@ -11,7 +11,7 @@ export const users = async (args) => {
 }
 
 export const usersCount = async (args) => {
-    let query = {};
+    let query = {role: {$ne: "client"}};
     const skip = args.skip;
     const limit = args.limit;
     const filters = extractFilters(args.filters, userFilters(args.filters));

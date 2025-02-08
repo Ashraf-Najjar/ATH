@@ -4,6 +4,7 @@ export const userInputs = `#graphql
    lastName: String
    email: String
    phone: String
+   password: String
    # managers: managersSchema,
    address: AddressInput,
     # role: {
