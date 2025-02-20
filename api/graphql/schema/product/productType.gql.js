@@ -1,17 +1,23 @@
 export const productDefs = `#graphql
  type Product {
+   _id: ID
     name: String
     description: String
+    note: String
     quantity: Int
+    price: Int
     category: Category
     subCategory: SubCategory
+    image: File,
     createdAt: Date,
     lastUpdate: Date,
-    createdBy: User
+    createdBy: User,
+    deleted: Boolean,
+    enabled: Boolean
  }
 
  extend type Query {
-      products: [Product]
+      products(skip: Int, limit: Int, filters: [FilterInput]): [Product]
       product(id: ID): Product
    }
 

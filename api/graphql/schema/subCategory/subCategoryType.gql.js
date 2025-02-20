@@ -1,11 +1,12 @@
 export const subCategoryDefs = `#graphql
  type SubCategory {
-    name: String
-    description: String
-    createdAt: Date,
-    lastUpdate: Date,
-    createdBy: User
-    category: Category
+      _id: ID
+      name: String
+      description: String
+      createdAt: Date,
+      lastUpdate: Date,
+      createdBy: User
+      category: Category
  }
 
  extend type Query {

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 import { addressSchema } from '../shared/models/address.js';
+import { fileSchema } from '../shared/models/file.js';
 
 const productSchema = new Schema({
     name: String,
@@ -16,6 +17,8 @@ const productSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: "SubCategory"
     },
+    image: fileSchema,
+    price: Number,
     createdAt: Date,
     lastUpdate: Date,
     createdBy: {

@@ -9,7 +9,7 @@ export const subCategoryRoutes = express.Router();
 subCategoryRoutes.get('/list', async(req, res) => {
     const skip = +req.query.skip;
     const limit = +req.query.limit;
-    const filters = typeof req.query.filters === "string" ? JSON.parse(req.query.filters) : req.query.filters;
+    const filters = typeof req.query?.filters === "string" ? JSON.parse(req.query.filters) : req.query.filters;
     const subCategories = await subCategoryUseCases.subCategories({...req.body, skip, limit, filters, populate: true});
     const subCategoriesCount = await subCategoryUseCases.subCategoriesCount({...req.body, skip, limit, filters});
     return res.status(201).json({
@@ -19,7 +19,7 @@ subCategoryRoutes.get('/list', async(req, res) => {
 });
 
 subCategoryRoutes.get('/:id', async(req, res) => {
-    const subCategory = await subCategoryUseCases.subCategory(req.params);
+    const subCategory = await subCategoryUseCases.subCategory({...req.params, populate: true});
     return res.status(201).json({
         subCategory: subCategory
     })

@@ -2,6 +2,7 @@ import {userResolver} from "./user.resolver.js";
 import {clientResolver} from "./client.resolver.js";
 import {categoryResolver} from "./category.resolver.js";
 import {subCategoryResolver} from "./subCategory.resolver.js";
+import {productResolver} from "./product.resolver.js";
 import scalarTypes from "../../../shared/api/graphql/scalar-types/index.js";
 
 export default [
@@ -9,5 +10,6 @@ export default [
     userResolver,
     clientResolver,
     categoryResolver,
-    subCategoryResolver
+    subCategoryResolver,
+    productResolver
 ]

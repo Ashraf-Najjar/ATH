@@ -17,6 +17,7 @@ import {productInputs} from "./product/productInput.gql.js";
 
 import addressDefs from "./shared/addressType.gql.js";
 import filtersDefs from "./shared/filter.gql.js";
+import filesDefs from "./shared/file.gql.js";
 
 import scalarTypes from "../../../shared/api/graphql/scalar-types/index.js";
 
@@ -24,6 +25,7 @@ export default [
     scalarTypes.typedefs,
     addressDefs,
     filtersDefs,
+    filesDefs,
     rootSchema,
     userDefs,
     userInputs,

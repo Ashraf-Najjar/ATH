@@ -10,7 +10,7 @@ productRoutes.get('/list', async(req, res) => {
     const skip = +req.query.skip;
     const limit = +req.query.limit;
     const filters = typeof req.query.filters === "string" ? JSON.parse(req.query.filters) : req.query.filters;
-    const products = await productUseCases.products({...req.body, skip, limit, filters});
+    const products = await productUseCases.products({...req.body, skip, limit, filters, populate: true});
     const productsCount = await productUseCases.productsCount({...req.body, skip, limit, filters});
     return res.status(201).json({
         products: products,
@@ -19,7 +19,7 @@ productRoutes.get('/list', async(req, res) => {
 });
 
 productRoutes.get('/:id', async(req, res) => {
-    const product = await productUseCases.product(req.params);
+    const product = await productUseCases.product({...req.params, populate: true});
     return res.status(201).json({
         product: product
     })
