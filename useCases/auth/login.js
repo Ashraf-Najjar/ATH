@@ -11,7 +11,6 @@ export const login = async (args) => {
     if(!auth){
         throw Error('incorrect password');
     }
-    console.log("user info is ", user)
     const token = await createToken({email: user.email, role: user.role});
     return {
         token,
