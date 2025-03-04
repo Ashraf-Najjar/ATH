@@ -4,10 +4,11 @@ import { addressSchema } from '../shared/models/address.js';
 import { fileSchema } from '../shared/models/file.js';
 
 const productSchema = new Schema({
-    name: String,
+    name: { type: String, required: true }, // Ensure quantity is required,
     description: String,
     note: String,
-    quantity: Number,
+    quantity: { type: Number, required: true }, // Ensure quantity is required,
+    price: { type: Number, required: true }, // Ensure quantity is required,
     address: [addressSchema],
     category: {
         type: mongoose.Schema.Types.ObjectId, 
@@ -18,7 +19,6 @@ const productSchema = new Schema({
         ref: "SubCategory"
     },
     image: fileSchema,
-    price: Number,
     createdAt: Date,
     lastUpdate: Date,
     createdBy: {

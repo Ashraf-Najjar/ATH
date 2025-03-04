@@ -17,5 +17,5 @@ applyRoutes(app);
 await startApolloServer(app);
 
 await dbConnection();
-
+console.info("Port: ", port)
 app.listen(port);

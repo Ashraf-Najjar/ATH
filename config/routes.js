@@ -10,6 +10,8 @@ import { clientRoutes } from "../api/restApi/routes/client.js";
 import { categoryRoutes } from "../api/restApi/routes/category.js";
 import { subCategoryRoutes } from "../api/restApi/routes/subCategory.js";
 import { productRoutes } from "../api/restApi/routes/product.js";
+import { cartRoutes } from "../api/restApi/routes/cart.js";
+import { orderRoutes } from "../api/restApi/routes/order.js";
 
 import { fileURLToPath } from "url";
 
@@ -39,4 +41,6 @@ export const applyRoutes = (app) => {
   app.use('/category', categoryRoutes);
   app.use('/subCategory', subCategoryRoutes);
   app.use('/product', productRoutes);
+  app.use('/cart', cartRoutes);
+  app.use('/order', orderRoutes);
 }
